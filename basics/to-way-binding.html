@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>VueJS</title>
+    <link rel="stylesheet" href="">
+    <script src="../vue.js"></script>
+</head>
+<body>
+<div id="app">
+    <label>
+        <input type="text" v-model="name">
+    </label>
+    <p>{{ name }}</p>
+
+
+    <button v-on:click="counter++">Increase</button>
+    <button @click="counter--">Decrease</button>
+    <button v-on:click="secondCounter++">Increase Second</button>
+
+    <p>Counter: {{ counter }} | {{secondCounter}}</p>
+    <p>Result: {{ result() }} | {{ output }}</p>
+
+
+    <a v-bind:href="link">link</a>
+    <a :href="link">link</a>
+
+</div>
+<script>
+    // You may of course also outsource this script code into a separate file (e.g. app.js) and simply import this file here
+    new Vue({
+        el: '#app',
+        data: {
+            name: 'Jock',
+            counter: 0,
+            secondCounter: 0,
+            link: 'http://google.com',
+            // result: '',
+        },
+        // NOT ectecuted if changes don't affect it (for example is secondCounter changes this method won't be fired)
+        computed: {
+            output: function () {
+                console.log('Computed');
+                return this.counter > 5 ? 'Greater than 5' : 'Smaller than 5';
+            }
+        },
+        watch: {
+            // listen to counter property of data changes and fires that function
+            counter: function (value) {
+                var vm = this;
+                setTimeout(function () {
+                  vm.counter = 0;
+                }, 2000);
+            }
+        },
+        methods: {
+            // executed every time any variable on data changes
+            result: function () {
+                console.log('Method');
+                return this.counter > 5 ? 'Greater than 5' : 'Smaller than 5';
+            }
+        }
+    })
+</script>
+</body>
+</html>
