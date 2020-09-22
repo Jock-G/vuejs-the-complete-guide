@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>VueJS</title>
+    <link rel="stylesheet" href="">
+    <script src="../../vue.js"></script>
+</head>
+
+<style>
+    @import 'styles.css';
+</style>
+
+<body>
+<div id="exercise">
+    <!-- 1) Start the Effect with the Button. The Effect should alternate the "highlight" or "shrink" class on each new setInterval tick (attach respective class to the div with id "effect" below) -->
+    <div>
+        <button @click="startEffect">Start Effect</button>
+        <button @click="stopEffect">Stop Effect</button>
+        <div id="effect" :class="myClass">effect</div>
+    </div>
+    <!-- 2) Create a couple of CSS classes and attach them via the array syntax -->
+    <div :class="['blue-square', 'custom-margin']">I got no class :(</div>
+    <!-- 3) Let the user enter a class (create some example classes) and attach it -->
+    <div>
+        <label>
+            Insert a class: <input type="text" v-model="insertedClass">
+        </label>
+        <div :class="insertedClass">I can have a class!</div>
+    </div>
+    <!-- 4) Let the user enter a class and enter true/ false for another class (create some example classes) and attach the classes -->
+    <div>
+        <label>
+            Insert a class: <input type="text" v-model="insertedClass2">
+        </label>
+        <label>
+            Type true or false for extra-margin class <input type="text" v-model="extraClassInput"
+                                                             v-on:input="checkExtraClass">
+        </label>
+        <div :class="[insertedClass2, extraClassCheck ? extraClass : '']">I can have two classes!</div>
+    </div>
+    <!-- 5) Repeat 3) but now with values for styles (instead of class names). Attach the respective styles.  -->
+    <div>
+        <label>
+            Instert a style (e.g. width: 50px; background-color: blue) <input type="text" v-model="userStyle"
+                                                                              v-on:input="checkStyle()">
+        </label>
+        <div :style="userStyle">Custom style</div>
+    </div>
+    <!-- 6) Create a simple progress bar with setInterval and style bindings. Start it by hitting the below button. -->
+    <div>
+        <button @click="startProgress">Start Progress</button>
+        <div :class="'progressClass'" :style="{width: progressWidth + 'px'}">
+            <span v-if="progressWidth > 0">{{progressWidth}}%</span>
+        </div>
+    </div>
+</div>
+
+</body>
+<script src="app.js"></script>
+</html>
+

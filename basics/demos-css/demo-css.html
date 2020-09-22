@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>VueJS</title>
+    <link rel="stylesheet" href="">
+    <script src="../../vue.js"></script>
+</head>
+
+<style>
+    @import 'demo-css.css';
+</style>
+<body>
+
+<script src="../../vue.js"></script>
+
+<div id="app">
+    <div class="demo" @click="attachRed = !attachRed" :class="divClasses"></div>
+    <div class="demo" :class="{blue: attachRed}"></div>
+    <div class="demo" :class="color"></div>
+
+    <input type="text" v-model="color">
+</div>
+
+
+<script type="application/javascript">
+    new Vue({
+        el: '#app',
+        data: {
+            attachRed: false,
+            color: 'green'
+        },
+        computed: {
+            divClasses: function () {
+                return {
+                    red: this.attachRed,
+                    blue: !this.attachRed
+                }
+            }
+        },
+        methods: {}
+    })
+</script>
+
+
+</body>
+</html>

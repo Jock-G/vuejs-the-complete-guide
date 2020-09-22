@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>VueJS</title>
+    <link rel="stylesheet" href="">
+    <script src="../../vue.js"></script>
+</head>
+
+<style>
+    @import 'demo-css.css';
+</style>
+<body>
+
+<script src="../../vue.js"></script>
+
+<div id="app">
+    <div class="demo" :style="{backgroundColor: color}"></div>
+    <div class="demo" :style="myStyle"></div>
+    <div class="demo" :style="[myStyle, {height: width + 'px'}]"></div>
+
+    <input type="text" v-model="color">
+    <input type="number" v-model="width">
+</div>
+
+
+<script type="application/javascript">
+    new Vue({
+        el: '#app',
+        data: {
+            color: 'green',
+            width: 50
+        },
+        computed: {
+            myStyle: function () {
+                return {
+                    backgroundColor: this.color,
+                    width: this.width + 'px'
+                }
+            }
+        },
+        methods: {}
+    })
+</script>
+
+
+</body>
+</html>
